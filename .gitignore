@@ -1,0 +1,6 @@
+#to samo co ponizej *[oa]
+*.a
+*.o
+*.~
+lista
+
