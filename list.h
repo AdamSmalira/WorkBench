@@ -1,10 +1,12 @@
 #ifndef __LIST
 #define __LIST
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct List List;
 
 // create and returns instance of List
-List * create_list(void);
+List * create_list(void); //OK
 
 // releases all memory used by list, list is set to NULL
 void destroy_list(List ** list);
