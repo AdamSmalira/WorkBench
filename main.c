@@ -12,8 +12,9 @@ int main(void) {
     append_to_list(head, 20);
     append_to_list(head, 30);
     printf("ilosc el w liscie: %d\n", count_elements(head));
-    printf("start: %p\n", start);
-    printf("head : %p\n", start);
+    printf("list[1]=%d\n", get_nth_element(head, 1));
+    printf("list[3]=%d\n", get_nth_element(head, 3));
+    printf("list[2]=%d\n", get_nth_element(head, 2));
 
     
     /*

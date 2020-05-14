@@ -53,9 +53,25 @@ int count_elements(List * list)
     return counter;
 }
 
-//-- elements are indexed from 0
+// elements are indexed from 0
 int get_nth_element(List * list, int index)
 {
+    int counter = 0;
+    while(list->next != 0)
+    {
+        counter++;
+        if(counter == index)
+            {break;}
 
-    
+        list = list->next;
+    }
+    return list->dane;
 }
+
+//-- insert element to list at specified index,
+// indexed from 0, elements are shifted
+void insert_to_list(List * list, int elem, int index)
+{
+
+}
+
