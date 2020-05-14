@@ -11,4 +11,7 @@ debug:
 	@echo "Kompiluje"
 
 run:
+	@echo "Executing file" 
 	./lista
+	
+	

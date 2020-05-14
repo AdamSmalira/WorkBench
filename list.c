@@ -1,5 +1,5 @@
 #include "list.h"
-
+#define COUNTER_TO_INDEX -1
 struct List {
     int dane;
     List* next;
@@ -14,7 +14,6 @@ List * create_list(void)
         exit (-1);
     }
     
-    printf("alloc OK\n"); //Do usuniecia
     instancja->next=NULL;
 
     return instancja;
@@ -23,22 +22,17 @@ List * create_list(void)
 
 void append_to_list(List* list, int elem)
 {
-    /* przesuwam sie od zerowego idx listy na ostatni idx" */ 
+    /* shifitng from list[0] to list[last]" */ 
     while(list->next != 0 )
     {
         list = list->next;
-        puts("skok");
     }
 
-    /* na ostatnim list[idx]
+    /* working on list[last]
     list->dane = wartosc
     list->next = mallock() */
     list->dane = elem;
-    if( (list->next = (List*)malloc(sizeof(List)) ) == 0 )
-    {
-        printf("Bad alloc\n");
-        exit (-1);
-    }
+    list->next = create_list();
 }
 
 // return amount of elements in list
@@ -56,7 +50,9 @@ int count_elements(List * list)
 // elements are indexed from 0
 int get_nth_element(List * list, int index)
 {
-    int counter = 0;
+    int counter = COUNTER_TO_INDEX;
+
+    /* shifitng from list[0] to list[index]" */ 
     while(list->next != 0)
     {
         counter++;
@@ -65,6 +61,14 @@ int get_nth_element(List * list, int index)
 
         list = list->next;
     }
+
+    /* guard "out of range" */
+        if(counter < index)
+    {
+        printf("Pointed index doesn't exist\n");
+        exit (-1);
+    }
+
     return list->dane;
 }
 
@@ -73,5 +77,28 @@ int get_nth_element(List * list, int index)
 void insert_to_list(List * list, int elem, int index)
 {
 
+    int counter = COUNTER_TO_INDEX;
+    while(list->next != 0)
+    {
+        counter++;
+        if(counter == index)
+            {break;}
+
+        list = list->next;
+    }
+
+    /* guard "out of range" */
+        if(counter < index)
+    {
+        printf("Pointed index doesn't exist\n");
+        exit (-1);
+    }
+    
+    List* aux = create_list();
+    aux->dane = list->dane;
+    aux->next = list->next;
+    
+    list->dane = elem;
+    list->next = aux;
 }
 

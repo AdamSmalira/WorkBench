@@ -2,19 +2,19 @@
 
 
 int main(void) {
-    
-    List* head = NULL; 
-    List* start = create_list();
-    printf("main: %p start\n", start);
-    head = start;
+    int List_Size = 0;
+    List* head = create_list(); 
 
     append_to_list(head, 10);
     append_to_list(head, 20);
     append_to_list(head, 30);
-    printf("ilosc el w liscie: %d\n", count_elements(head));
-    printf("list[1]=%d\n", get_nth_element(head, 1));
-    printf("list[3]=%d\n", get_nth_element(head, 3));
-    printf("list[2]=%d\n", get_nth_element(head, 2));
+    insert_to_list(head, 100, 1);
+
+    List_Size = count_elements(head);
+    for(int i = 0; i < List_Size; i++)
+    {
+        printf("list[%i]=%d\n", i, get_nth_element(head, i));
+    }
 
     
     /*

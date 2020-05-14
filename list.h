@@ -17,7 +17,7 @@ int count_elements(List * list);
 //OK append element to list at the end
 void append_to_list(List * list, int elem);
 
-//-- elements are indexed from 0
+//OK elements are indexed from 0
 int get_nth_element(List * list, int index);
 
 //-- remove nth element - indexed from 0
