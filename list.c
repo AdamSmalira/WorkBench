@@ -1,5 +1,6 @@
 #include "list.h"
 #define COUNTER_TO_INDEX -1
+
 struct List {
     int dane;
     List* next;
@@ -15,7 +16,7 @@ List * create_list(void)
     }
     
     instancja->next=NULL;
-
+    printf("ALOKUJE %p\n", instancja);
     return instancja;
  
 }
@@ -33,6 +34,7 @@ void append_to_list(List* list, int elem)
     list->next = mallock() */
     list->dane = elem;
     list->next = create_list();
+    
 }
 
 // return amount of elements in list
@@ -102,3 +104,32 @@ void insert_to_list(List * list, int elem, int index)
     list->next = aux;
 }
 
+// clear list - remove all elements
+void clear_list(List * list)
+{
+    int rozmiar = count_elements(list);
+    List* temp = list;
+    
+    for(rozmiar; rozmiar > 0; rozmiar--)
+    {
+        list = temp;    
+        
+        while(list->next->next != 0)
+        {
+            list=list->next;
+        }
+        printf("DEALOKU %p\n", list->next);
+        free(list->next);
+        list->next = NULL;
+    }
+}
+
+//-- releases all memory used by list, list is set to NULL
+void destroy_list(List ** list)
+{
+    if( (*list)->next != 0 )
+        clear_list(*list);
+
+    printf("DEALOKU %p\n", *list);
+    free(*list);
+}

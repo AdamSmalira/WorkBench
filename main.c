@@ -7,15 +7,29 @@ int main(void) {
 
     append_to_list(head, 10);
     append_to_list(head, 20);
-    append_to_list(head, 30);
-    insert_to_list(head, 100, 1);
+    append_to_list(head, 20);
+    append_to_list(head, 20);
+    append_to_list(head, 20);
+    
+    
+    
 
     List_Size = count_elements(head);
+  /*  
     for(int i = 0; i < List_Size; i++)
     {
         printf("list[%i]=%d\n", i, get_nth_element(head, i));
     }
+*/
+    printf("rozmiar:%d\n",count_elements(head));
+    clear_list(head);
+    destroy_list(&head);
+    //clear_list(head);
+    printf("rozmiar:%d\n",count_elements(head));
+    List_Size = count_elements(head);
+   
 
+    
     
     /*
     List * list = create_list();
