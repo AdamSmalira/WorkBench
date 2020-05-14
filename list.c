@@ -23,30 +23,39 @@ List * create_list(void)
 
 void append_to_list(List* list, int elem)
 {
-    
-    list->dane = elem;
+    /* przesuwam sie od zerowego idx listy na ostatni idx" */ 
+    while(list->next != 0 )
+    {
+        list = list->next;
+        puts("skok");
+    }
 
+    /* na ostatnim list[idx]
+    list->dane = wartosc
+    list->next = mallock() */
+    list->dane = elem;
     if( (list->next = (List*)malloc(sizeof(List)) ) == 0 )
     {
         printf("Bad alloc\n");
         exit (-1);
     }
-    printf("appd: %p IN\n", list);
-    list = list->next;
-    printf("appd: %p MID\n", list);
-    list->next = NULL;
-    printf("appd: %p OUT\n\n", list->next);
 }
 
 // return amount of elements in list
 int count_elements(List * list)
 {
     int counter = 0;
-    while(list)
+    while(list->next != 0)
     {
-        printf("licze: %p\n", list);
         counter++;
         list = list->next;
     }
     return counter;
+}
+
+//-- elements are indexed from 0
+int get_nth_element(List * list, int index)
+{
+
+    
 }

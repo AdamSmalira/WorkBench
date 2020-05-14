@@ -7,10 +7,14 @@ int main(void) {
     List* start = create_list();
     printf("main: %p start\n", start);
     head = start;
-    printf("main: %p head\n\n", head);
+
     append_to_list(head, 10);
     append_to_list(head, 20);
+    append_to_list(head, 30);
     printf("ilosc el w liscie: %d\n", count_elements(head));
+    printf("start: %p\n", start);
+    printf("head : %p\n", start);
+
     
     /*
     List * list = create_list();
