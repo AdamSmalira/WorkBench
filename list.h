@@ -20,7 +20,7 @@ void append_to_list(List * list, int elem);
 //OK elements are indexed from 0
 int get_nth_element(List * list, int index);
 
-//-- remove nth element - indexed from 0
+//OK remove nth element - indexed from 0
 void remove_nth_element(List * list, int index);
 
 //OK clear list - remove all elements

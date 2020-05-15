@@ -10,8 +10,9 @@ debug:
 	clear
 	@echo "Kompiluje"
 
-run:
+r:
 	@echo "Executing file" 
 	./lista
 	
-	
+val:
+	valgrind  --leak-check=full ./lista

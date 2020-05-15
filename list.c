@@ -80,6 +80,8 @@ void insert_to_list(List * list, int elem, int index)
 {
 
     int counter = COUNTER_TO_INDEX;
+
+    /* shifitng from list[0] to list[index]" */ 
     while(list->next != 0)
     {
         counter++;
@@ -124,7 +126,7 @@ void clear_list(List * list)
     }
 }
 
-//-- releases all memory used by list, list is set to NULL
+// releases all memory used by list, list is set to NULL
 void destroy_list(List ** list)
 {
     if( (*list)->next != 0 )
@@ -132,4 +134,104 @@ void destroy_list(List ** list)
 
     printf("DEALOKU %p\n", *list);
     free(*list);
+    *list = NULL;
+}
+
+// remove nth element - indexed from 0
+void remove_nth_element(List * list, int index)
+{
+
+    int counter = COUNTER_TO_INDEX;
+
+    /* shifitng from list[0] to list[index]" */ 
+    while(list->next != 0)
+    {
+        counter++;
+        if(counter == index)
+            {break;}
+
+        list = list->next;
+    }
+
+    /* guard "out of range" */
+        if(counter < index)
+    {
+        printf("Pointed index doesn't exist\n");
+        exit (-1);
+    }
+    
+    List* temp = list->next->next;
+    list->dane = list->next->dane;
+    printf("DEALOKU %p\n", list->next);
+    free(list->next);
+    list->next = temp;
+}
+
+void reverse_list(List * list)
+{
+   List *prevNode;
+   List *curNode;
+  
+   
+   List* head;// = create_list(); //skopiowane wartosci glowy
+ /*   head->dane = list->dane;
+   head->next = list->next;
+   printf("head %p\n\n", head); */
+    puts("");
+    head = list->next;
+    
+    
+    printf("mama %p\n", list);
+    printf("head %p\n\n", head);
+
+    if(head != NULL){
+        prevNode = head;
+        head = head->next;
+        curNode = head;
+        
+        
+        printf("head %p\n", head);
+        printf("prev %p\n", prevNode);
+        printf("curr %p\n\n", curNode);
+        
+
+        prevNode->next = NULL; // Make first node as last node
+        
+
+            while(head != NULL)
+            {
+                head = head->next;
+                curNode->next = prevNode;
+
+                prevNode = curNode;
+                curNode = head;
+                printf("head %p PETLA\n", head);
+                printf("preV %p PETLA\n", prevNode);
+                printf("preVnext %p PETLA\n", prevNode->next);
+                printf("curN %p PETLA\n\n", curNode);
+
+            }
+        printf("end of loop\n");
+        head = prevNode;
+        printf("head %p [%d]RE\n", head, head->dane);
+
+    }   
+            list->next = head;
+    printf("list next %p RE\n\n", list->next);
+
+    List* temp = list;
+    int begin = list->dane;
+    
+    /* shifitng from list[0] to list[last]" */ 
+    while(temp->next->next != 0 )
+    {
+        temp = temp->next;
+        printf("check: temp[%d]\n", temp->dane);
+    }
+
+    temp->dane = begin;
+    list->dane = temp->dane;
+    printf("LIST[0]%d",list->dane);
+    //https://codeforwin.org/2015/09/c-program-to-reverse-singly-linked-list.html
+    
 }
