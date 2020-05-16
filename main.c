@@ -1,61 +1,31 @@
 #include "list.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(void) {
     int List_Size = 0;
     List* head = create_list(); 
 
     append_to_list(head, 10);
-    append_to_list(head, 20);
-    append_to_list(head, 30);
-    append_to_list(head, 40);
-
-    printf("\n\n");
-   // remove_nth_element(head, 0);
-   // remove_nth_element(head, 0);
-   
-    
+    append_to_list(head, 20); 
+    append_to_list(head, 30); 
+    append_to_list(head, 40); 
     
 
-    List_Size = count_elements(head);
-    printf("\n\n");
-    for(int i = 0; i < List_Size; i++)
-    {
-        printf("list[%i]=%d\n", i, get_nth_element(head, i));
-    }
+    printf("\n");
   
   reverse_list(head);
    
-    List_Size = count_elements(head);
+    //List_Size = count_elements(head); //blad bo zapetlony revers_list
     printf("\n\n");
-     for(int i = 0; i < List_Size; i++)
+     for(int i = 0; i < 10; i++)
     {
-        printf("list[%i]=%d\n", i, get_nth_element(head, i));
+        printf("list[%i]=%d\n", i-1, get_nth_element(head, i));
     }
    
-    destroy_list(&head);
-  /*   printf("rozmiar:%d\n",count_elements(head));
-    clear_list(head);
-    destroy,,,,_list(&head);
-    //clear_list(head);
-    printf("rozmiar:%d\n",count_elements(head));
-    List_Size = count_elements(head);
-   */ 
+    //destroy_list(&head); 
 
-    
-    
-    /*
-    List * list = create_list();
-    count_elements(list);
-    get_nth_element(list,0);
-
-    insert_to_list(list,101,0);
-    
-    clear_list(list);
-    append_to_list(list,101);
-    remove_nth_element(list, 2);
-    destroy_list(&list);
-    */
+  
 
 
    return 0;

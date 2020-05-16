@@ -1,7 +1,6 @@
 #ifndef __LIST
 #define __LIST
-#include <stdio.h>
-#include <stdlib.h>
+
 
 typedef struct List List;
 
