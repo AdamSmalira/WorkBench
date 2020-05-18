@@ -1,8 +1,8 @@
 #ifndef __LIST
 #define __LIST
 
-
 typedef struct List List;
+
 
 //OK create and returns instance of List
 List * create_list(void);
